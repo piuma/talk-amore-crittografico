@@ -1,0 +1,201 @@
+https://helpdesk.par-tec.it/issues/93593
+###########
+#### hash
+###########
+echo "message abc" > file1.txt
+md5sum file1.txt 
+sha256sum file1.txt
+
+md5sum ~/software/os/debian-10.6.0-amd64-netinst.iso
+
+echo "message acc" > file2.txt
+
+hexdump file1.txt
+hexdump file2.txt
+
+md5sum file*
+sha256sum file*
+
+###########
+#### demo chiave simmetrica
+###########
+### Alice
+cat >message.txt <<EOF
+Caro Bob,
+il nostro Amore criptico deve rimanere segreto! Tra pochi giorni dovrò
+sposarmi con Coso ma io non sono più innamorata di lui, vorrei solo
+stare insieme a te.
+
+Coso legge la mia posta ma il nostro Amore è al sicuro finché usiamo
+il "nostro segreto".
+
+Sempre tua
+   Alice
+EOF
+
+openssl aes-256-cbc -a -pbkdf2 -nosalt -in message.txt -out message.enc -nosalt -k "nostro segreto"
+
+invia-a-bob message.enc
+
+### Bob
+
+openssl aes-256-cbc -a -d -pbkdf2 -in message.enc -nosalt
+
+cat >message.txt <<EOF
+Cara Alice,
+Coso inizia a sospettare qualcosa, non sò per quanto ancora riuscirò a
+mantenere il "nostro segreto" al sicuro! Se dovesse scoprirlo riuscirà:
+ * ad interferire nei nostri messaggi
+ * leggere tutto quello che scriviamo
+ * decodificare tutte le vecchie lettere
+ * non sarò sicuro della tua identità
+
+Il nostro amore criptico è troppo simmetrico, dobbiamo trasformarlo un
+quacosa di più... in un amore asimmetrico. Incontriamoci faccia a
+faccia, io ti darò quello che più al mondo desideri, la mia chiave
+pubblica e tu mi darai la tua.
+
+PS: Aggiungiamo del sale(salt) al nostro Amore!
+
+Bob
+EOF
+
+###########
+#### demo chiave simmetrica con salt
+###########
+### Bob
+openssl aes-256-cbc -a -pbkdf2 -in message.txt -out message.enc -salt -k "nostro segreto"
+
+invia-ad-alice message.enc
+
+# Alice
+openssl aes-256-cbc -a -d -pbkdf2 -in message.enc -salt
+
+###########
+#### demo chiave assimmetrica (firma elettronica)
+###########
+# Alice
+openssl genrsa -out private-key-alice.pem 2048
+openssl rsa -in private-key-alice.pem -pubout -out public-key-alice.pem
+cp public-key-alice.pem ../Bob/
+
+# Alice
+cat >message.txt <<EOF
+Bob!
+sono proprio io, Alice, che ti sto scrivendo, ne puoi esser certo. Non
+posso dire altro.
+
+Firmato Alice
+EOF
+
+sha256sum message.txt 
+
+openssl dgst -sha256 -sign private-key-alice.pem -out firma.sha256 message.txt
+base64 firma.sha256
+
+invia-a-bob message.txt firma.sha256
+
+# Bob
+
+openssl dgst -sha256 -verify public-key-alice.pem -signature firma.sha256 message.txt
+
+###########
+#### demo crittografia asimmetrica (openssl)
+###########
+# Bob
+cat >message.txt <<EOF
+Alice,
+Tutti hanno letto il tuo ultimo messaggio e non puoi negare di averlo
+scritto tu stessa.
+
+Ho un idea però dobbiamo agire con cautela, ti spiego tutto via e-mail
+con E2E Enctyption, sei pronta a generare la coppia di chiavi?
+
+Tuo Bob
+EOF
+
+openssl pkeyutl -encrypt -inkey public-key-alice.pem -pubin -in message.txt -out message.enc
+
+invia-ad-alice message.enc
+
+# Alice
+openssl pkeyutl -decrypt -inkey private-key-alice.pem -in message.enc
+
+###########
+#### demo GPG: cifratura e firma digitale
+###########
+
+# Alice
+gpg --gen-key
+
+cat >message.txt <<EOF
+Bob,
+[...]
+Alice
+EOF
+
+### solo firma:
+gpg --local-user Alice --clearsign message.txt
+$ gpg --verify message.txt.asc
+gpg: Signature made mar 16 mag 2023, 14:40:13 CEST
+gpg:                using RSA key 4F4F7FD120A169E5FC5459F51454D42278921B24
+gpg:                issuer "alice@piumalab.org"
+gpg: Good signature from "Alice <alice@piumalab.org>" [ultimate]
+
+### firma + enc
+
+gpg --local-user Alice --recipient bob@piumalab.org --armor --encrypt message.txt
+
+invia-a-bob message.txt.asc
+
+# Bob
+gpg --decrypt  message.txt.asc
+
+##########
+### thunderbird
+##########
+
+
+##########
+### certificato
+##########
+
+# create cert request
+
+cat > csr.conf <<EOF
+[ req ]
+default_bits = 2048
+prompt = no
+default_md = sha256
+req_extensions = req_ext
+distinguished_name = dn
+
+[ dn ]
+C = IT
+ST = Italy
+L = Rome
+O = Par-Tec SpA
+OU = DevOps
+CN = alice-e-coso.sposi
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = alice-e-coso.sposi
+IP.1 = 127.0.0.1
+
+EOF
+
+openssl req -new -key private-key-alice.pem -out server-alice.req -config csr.conf
+
+openssl req -noout -in server-alice.req -text
+
+
+### sign request
+cd ../ca
+# https://gist.github.com/Soarez/9688998#openssl-ca
+
+openssl ca -config ca.conf -notext -extfile oats.extensions.cnf -out ../Alice/server-certificate-alice.pem -infiles ../Alice/server-alice.req
+
+cat ../Alice/server-certificate-alice.pem ca.crt > ../Alice/bundle-cert-alice.pem

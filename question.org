@@ -1,0 +1,5 @@
+* COSA VIENE GARANTITO?
+  - [ ] *Riservatezza*: Può leggerlo solo il destinatario (Bob)
+  - [ ] *Integrità*:    Il messaggio non è stato alterato
+  - [ ] *Autenticità*:  Il destinatario (Bob) può verificare l'identità del mittente (Alice)
+  - [ ] *Non ripudio*:  L'autore del messaggio (Alice) non potrà negare di averlo inviato
