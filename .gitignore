@@ -1,0 +1,14 @@
+reveal-md-scripts
+
+demo/Alice/*
+demo/Bob/*
+
+demo/ca/ca.crt
+demo/ca/ca.key
+demo/ca/ca.srl
+demo/ca/index.txt
+demo/ca/index.txt.attr
+demo/ca/index.txt.old
+demo/ca/newcerts/
+demo/ca/serial
+demo/ca/serial.old
