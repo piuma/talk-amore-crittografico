@@ -1,7 +1,0 @@
-reveal-md --theme=night slides.md 
-
-keys:
- s start presentation
- <bar> next
- o
- 
