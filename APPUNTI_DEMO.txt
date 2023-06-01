@@ -1,4 +1,3 @@
-https://helpdesk.par-tec.it/issues/93593
 ###########
 #### hash
 ###########
@@ -130,7 +129,11 @@ gpg --gen-key
 
 cat >message.txt <<EOF
 Bob,
-[...]
+il matrimonio è vicino, Coso ha già mandato le partecipazioni a tutti
+gli invitati con il sito del matrimonio:
+ http://alice-e-coso.sposi
+ 
+Non vedo l'ora di conoscere la tua idea per sabotare il matrimonio.
 Alice
 EOF
 
@@ -155,6 +158,29 @@ gpg --decrypt  message.txt.asc
 ### thunderbird
 ##########
 
+thunderbird  --ProfileManager
+
+gpg --export-secret-keys Alice > alice-secret-gpg-key.asc
+gpg --export-secret-keys Bob > bob-secret-gpg-key.asc
+
+# Bob
+Cara Alice,
+come hai notato la url nella partecipazione è in http, l'idea è quella di
+creare una pagina con la stessa url ma in https. I browser e gli invitati la
+preferiranno e la leggeranno al posto del sito del matrimonio.
+
+Bob
+
+# Alice
+Ciao Bob,
+Ottima idea Amore mio. Ma gli invitati come prima cosa andranno a verificare
+la validità del sito.
+
+Dobbiamo far certificare il nostro Amore da un ente esterno, genero il
+certificato tls con la mia chiave privata e lo faccio validare da una CA
+così tutti saranno certi del nostro Amore.
+
+Alice
 
 ##########
 ### certificato
