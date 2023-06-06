@@ -9,8 +9,8 @@ md5sum ~/software/os/debian-10.6.0-amd64-netinst.iso
 
 echo "message acc" > file2.txt
 
-hexdump file1.txt
-hexdump file2.txt
+xxd -b file1.txt
+xxd -b file2.txt
 
 md5sum file*
 sha256sum file*
@@ -32,7 +32,7 @@ Sempre tua
    Alice
 EOF
 
-openssl aes-256-cbc -a -pbkdf2 -nosalt -in message.txt -out message.enc -nosalt -k "nostro segreto"
+openssl aes-256-cbc -a -pbkdf2 -nosalt -in message.txt -out message.enc -k "nostro segreto"
 
 invia-a-bob message.enc
 
@@ -172,8 +172,8 @@ Alice mia,
 la url nella partecipazione è in chiaro, possiamo creare un sito che risponde
 alla stessa url ma in https. I browser e gli invitati lo preferiranno e la
 leggeranno al posto del sito del matrimonio, in quella pagina potrai spiegare
-a tutti che il nostro Amore è più forte e duraturo... romperlo con la forza
-bruta significa impiegare miliardi di anni.
+a tutti che il nostro Amore è più forte e duraturo... infatti resiste miliardi
+di anni se provassero a romperlo con la forza bruta.
 
 Bob
 

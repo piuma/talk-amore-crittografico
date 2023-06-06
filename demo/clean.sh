@@ -5,6 +5,8 @@ rm Alice/csr.conf \
    Alice/private-key-alice.pem \
    Alice/public-key-alice.pem \
    Alice/server-alice.req \
+   Alice/alice-secret-key.asc \
+   Alice/message.txt.asc \
    Alice/server-certificate-alice.pem \
    Alice/firma.sha256 \
    Alice/message.txt \

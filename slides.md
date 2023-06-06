@@ -23,8 +23,8 @@ digitali e http+tls
  - firma elettronica
  - PGP
  - GnuPG
- - crittografia ibrida
  - certificati digitali e CA
+ - crittografia ibrida
  - http + TLS = https
 
 Note:
@@ -350,6 +350,10 @@ Note:
  - [X] *Integrità*: Il messaggio non è stato alterato
  - [X] *Autenticità*: Il destinatario Bob può verificare l'identità del mittente (Alice)
  - [X] *Non ripudio*: L'autore di una dichiarazione non potrà negare la paternità e la validità del messaggio
+
+---
+### Bob **→** Alice
+#### GPG e thunderbird
 
 ---
 ### certificati digitali
