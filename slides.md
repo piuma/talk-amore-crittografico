@@ -197,6 +197,9 @@ I nomi Alice e Bob sono molto usati per convenienza nella crittografia
 
 difficile da seguire specialmente in sistemi complessi che usano molti
 passaggi.
+----
+# ?
+Note:
 
  - [X] *Riservatezza*: Può leggerlo solo il destinatario (Bob)
  - [X] *Integrità*: Il messaggio non è stato alterato
@@ -244,13 +247,26 @@ Ogni attore coinvolto ha una coppia di chiavi:
 ![text](image/firmare.jpg)
 
 ----
+### Alice **→** Bob
+#### chiave assimmetrica (firma elettronica)
+
+----
+# ?
+Note:
+
+ - [ ] *Riservatezza*: Può leggerlo solo il destinatario (Bob)
+ - [X] *Integrità*: Il messaggio non è stato alterato
+ - [X] *Autenticità*: Il destinatario Bob può verificare l'identità del mittente (Alice)
+ - [X] *Non ripudio*: L'autore di una dichiarazione non potrà negare la paternità e la validità del messaggio
+
+----
 #### crittografia asimmetrica - verifica firma elettronica
 
 ![text](image/verifica_firma.jpg)
 
 ----
-### Alice **→** Bob
-#### chiave assimmetrica (firma elettronica)
+### Bob
+#### chiave assimmetrica (verifica firma elettronica)
 
 ---
 #### crittografia asimmetrica
@@ -278,6 +294,15 @@ graph LR;
 ----
 ### Bob **→** Alice
 #### demo crittografia asimmetrica (openssl)
+
+----
+# ?
+Note:
+
+ - [X] *Riservatezza*: Può leggerlo solo il destinatario (Bob)
+ - [X] *Integrità*: Il messaggio non è stato alterato
+ - [ ] *Autenticità*: Il destinatario Bob può verificare l'identità del mittente (Alice)
+ - [ ] *Non ripudio*: L'autore di una dichiarazione non potrà negare la paternità e la validità del messaggio
 
 ---
 ### PGP (Pretty Good Privacy)
@@ -317,6 +342,37 @@ https://www.gnupg.org/gph/it/gestione-chiavi.html
 ### Alice **→** Bob
 #### GPG: cifratura e firma digitale
 
+----
+# ?
+Note:
+
+ - [X] *Riservatezza*: Può leggerlo solo il destinatario (Bob)
+ - [X] *Integrità*: Il messaggio non è stato alterato
+ - [X] *Autenticità*: Il destinatario Bob può verificare l'identità del mittente (Alice)
+ - [X] *Non ripudio*: L'autore di una dichiarazione non potrà negare la paternità e la validità del messaggio
+
+---
+### certificati digitali
+
+#### Certificato digitale è documento che contiene:
+ - la chiave pubblica
+ - dati del propretario
+ - firma digitale che ne garantisce la validità da parte di una CA (Certification Authority)
+----
+### certificati digitali e CA (Certification Authority)
+
+#### Certification Autority è un ente di certificazione:
+  - ha una coppia di chiavi che usa per validare i certificati
+  - registro pubblico dei certificati digitali emessi e tuttora validi
+
+Note:
+less /etc/pki/tls/cert.pem
+
+----
+#### generazione certificato digitale
+
+![text](image/ca-diagram-b.png) <!-- .element width="800px" -->
+
 ---
 ### crittografia ibrida
 
@@ -342,26 +398,7 @@ simmetrico e consente uno scambio di chiavi sicuro anche su un canale
 non sicuro.
 
 ---
-### certificati digitali
-
-#### Certificato digitale è documento che contiene:
- - la chiave pubblica
- - dati del propretario
- - firma digitale che ne garantisce la validità da parte di una CA (Certification Authority)
-----
-### certificati digitali e CA (Certification Authority)
-
-#### Certification Autority è un ente di certificazione:
-  - ha una coppia di chiavi che usa per validare i certificati
-  - registro pubblico dei certificati digitali emessi e tuttora validi
-
-----
-#### certificati digitali e CA (Certification Authority)
-
-![text](image/ca-diagram-b.png) <!-- .element width="800px" -->
-
----
-#### comunicazioni sicure su Internet: Https e TLS
+#### comunicazioni sicure su Internet: https
 
 ![text](image/https.png)
 
@@ -381,3 +418,13 @@ https://sectigostore.com/page/how-does-https-work/
 	Il server decripta la chiave di sessione con la chiave privata.
  5. tutti i dati trasmessi viaggiano su un canale sicuro e
     crittografato con la chiave di sessione
+
+---
+
+## ... e vissero per sempre felici e criptati
+
+_danilo.abbasciano@par-tec.it_
+
+https://github.com/piuma/talk-amore-crittografico
+
+

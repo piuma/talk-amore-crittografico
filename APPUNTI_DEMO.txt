@@ -94,6 +94,10 @@ base64 firma.sha256
 
 invia-a-bob message.txt firma.sha256
 
+###########
+#### demo chiave assimmetrica (verifica firma elettronica)
+###########
+
 # Bob
 
 openssl dgst -sha256 -verify public-key-alice.pem -signature firma.sha256 message.txt
@@ -129,11 +133,11 @@ gpg --gen-key
 
 cat >message.txt <<EOF
 Bob,
-il matrimonio è vicino, Coso ha già mandato le partecipazioni a tutti
+il matrimonio è vicino ;( Coso ha già mandato le partecipazioni a tutti
 gli invitati con il sito del matrimonio:
  http://alice-e-coso.sposi
- 
-Non vedo l'ora di conoscere la tua idea per sabotare il matrimonio.
+
+Dobbiamo assolutamente sabotare il matrimonio! Dimmi cosa hai in mente.
 Alice
 EOF
 
@@ -164,20 +168,22 @@ gpg --export-secret-keys Alice > alice-secret-gpg-key.asc
 gpg --export-secret-keys Bob > bob-secret-gpg-key.asc
 
 # Bob
-Cara Alice,
-come hai notato la url nella partecipazione è in http, l'idea è quella di
-creare una pagina con la stessa url ma in https. I browser e gli invitati la
-preferiranno e la leggeranno al posto del sito del matrimonio.
+Alice mia,
+la url nella partecipazione è in chiaro, possiamo creare un sito che risponde
+alla stessa url ma in https. I browser e gli invitati lo preferiranno e la
+leggeranno al posto del sito del matrimonio, in quella pagina potrai spiegare
+a tutti che il nostro Amore è più forte e duraturo... romperlo con la forza
+bruta significa impiegare miliardi di anni.
 
 Bob
 
 # Alice
-Ciao Bob,
+Caro Bob,
 Ottima idea Amore mio. Ma gli invitati come prima cosa andranno a verificare
 la validità del sito.
 
-Dobbiamo far certificare il nostro Amore da un ente esterno, genero il
-certificato tls con la mia chiave privata e lo faccio validare da una CA
+Allora lo faccio certificare da un soggetto terzo di cui tutti si fidano. Genero
+il certificato tls con la mia chiave privata e lo faccio validare da una CA
 così tutti saranno certi del nostro Amore.
 
 Alice
