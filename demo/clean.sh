@@ -8,14 +8,19 @@ rm Alice/csr.conf \
    Alice/alice-secret-key.asc \
    Alice/message.txt.asc \
    Alice/server-certificate-alice.pem \
+   Alice/alice-secret-gpg-key.asc \
    Alice/firma.sha256 \
    Alice/message.txt \
    Alice/message.enc
 
 rm Bob/message.enc \
    Bob/message.txt \
+   Bob/bob-secret-gpg-key.asc \
+   Bob/message.txt.asc \
    Bob/firma.sha256 \
    Bob/public-key-alice.pem
+
+rm hash/file1.txt hash/file2.txt
 
 ### clean certificate
 rm Alice/server-certificate-alice.pem \
