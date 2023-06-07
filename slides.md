@@ -236,6 +236,11 @@ Ogni attore coinvolto ha una coppia di chiavi:
  - **chiave pubblica**: deve essere distribuita
  - **chiave privata**:  appunto personale, segreta
 
+Note:
+ - 512 bit -> poche ore
+ - 1024 bit -> 1 anno con un milione di dollari
+ - 2048 bit -> milioni di anni
+
 ----
 #### crittografia asimmetrica
 
