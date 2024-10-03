@@ -1,0 +1,6 @@
+div.slide-background.present {
+    background-image: url(image/logo-292x300.png);
+    background-position: 20px 20px;
+    background-repeat: no-repeat;
+    background-size: 120px;
+}

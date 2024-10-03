@@ -25,6 +25,12 @@ digitali e http+tls
 ```
 reveal-md --theme=night slides.md 
 ```
+
+Run presentation with logo
+```
+reveal-md --theme=night --css=logo.css slides.md
+```
+
 usefull keys:
 ```
  s start presentation
