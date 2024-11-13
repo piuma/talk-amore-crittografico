@@ -1,0 +1,58 @@
+
+title = 'Un amore crittografico'
+
+[[slides]]
+
+[slides.MultipleChoice]
+title = 'Cosa viene garantito in questo caso? Riservatezza, Integrità, Autenticità, Non ripudio'
+introduce_question = 15000
+time_limit = 30000
+points_awarded = 1000
+answers = [
+	{ content.Text = 'Riservatezza: Può leggerlo solo il destinatario', correct = true },
+	{ content.Text = 'Integrità: Il messaggio non è stato alterato', correct = true },
+	{ content.Text = "Autenticità: Il destinatario può verificare l'identità del mittente", correct = true },
+	{ content.Text = "Non ripudio: L'autore del messaggio non potrà negare di averlo inviato", correct = false },
+]
+
+[[slides]]
+
+[slides.MultipleChoice]
+title = 'Cosa viene garantito in questo caso? Riservatezza, Integrità, Autenticità, Non ripudio'
+introduce_question = 15000
+time_limit = 30000
+points_awarded = 1000
+answers = [
+	{ content.Text = 'Riservatezza: Può leggerlo solo il destinatario', correct = false },
+	{ content.Text = 'Integrità: Il messaggio non è stato alterato', correct = true },
+	{ content.Text = "Autenticità: Il destinatario può verificare l'identità del mittente", correct = true },
+	{ content.Text = "Non ripudio: L'autore del messaggio non potrà negare di averlo inviato", correct = true },
+]
+
+[[slides]]
+
+[slides.MultipleChoice]
+title = 'Cosa viene garantito in questo caso? Riservatezza, Integrità, Autenticità, Non ripudio'
+introduce_question = 15000
+time_limit = 30000
+points_awarded = 1000
+answers = [
+	{ content.Text = 'Riservatezza: Può leggerlo solo il destinatario', correct = true },
+	{ content.Text = 'Integrità: Il messaggio non è stato alterato', correct = true },
+	{ content.Text = "Autenticità: Il destinatario può verificare l'identità del mittente", correct = false },
+	{ content.Text = "Non ripudio: L'autore del messaggio non potrà negare di averlo inviato", correct = false },
+]
+
+[[slides]]
+
+[slides.MultipleChoice]
+title = 'Cosa viene garantito in questo caso? Riservatezza, Integrità, Autenticità, Non ripudio'
+introduce_question = 15000
+time_limit = 30000
+points_awarded = 1000
+answers = [
+	{ content.Text = 'Riservatezza: Può leggerlo solo il destinatario', correct = true },
+	{ content.Text = 'Integrità: Il messaggio non è stato alterato', correct = true },
+	{ content.Text = "Autenticità: Il destinatario può verificare l'identità del mittente", correct = true },
+	{ content.Text = "Non ripudio: L'autore del messaggio non potrà negare di averlo inviato", correct = true },
+]

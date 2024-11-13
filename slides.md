@@ -382,6 +382,10 @@ less /etc/pki/tls/cert.pem
 
 ![text](image/ca-diagram-b.png) <!-- .element width="800px" -->
 
+----
+### Alice
+#### generazione certificato digitale
+
 ---
 ### crittografia ibrida
 
