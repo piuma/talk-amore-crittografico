@@ -23,12 +23,12 @@ digitali e http+tls
 
 ### run presentation
 ```
-reveal-md --theme=night slides.md 
+reveal-md --disable-auto-open --theme=night slides.md 
 ```
 
 Run presentation with logo
 ```
-reveal-md --theme=night --css=logo.css slides.md
+reveal-md --disable-auto-open --theme=night --css=logo.css slides.md
 ```
 
 usefull keys:

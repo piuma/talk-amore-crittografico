@@ -436,7 +436,7 @@ https://sectigostore.com/page/how-does-https-work/
 
 ## ... e vissero per sempre felici e criptati
 
-_danilo.abbasciano@par-tec.it_
+_danilo@piumalab.org_
 
 https://github.com/piuma/talk-amore-crittografico
 
